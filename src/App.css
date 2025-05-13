@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+.rethink-sans-700 {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+}
+
+.rethink-sans-400 {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+.rethink-sans-500 {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
