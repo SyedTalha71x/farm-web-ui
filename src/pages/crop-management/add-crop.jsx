@@ -51,6 +51,39 @@ const AddNewCrop = () => {
     const [harvestPlantDepth, setHarvestPlantDepth] = useState("0.5")
     const [harvestAverageHeight, setHarvestAverageHeight] = useState("30")
 
+    const [showModal, setShowModal] = useState(false)
+    const [showCustomModal, setshowCustomModal] = useState(false)
+
+    const openCustomModal = (e) => {
+        e.preventDefault()
+        setshowCustomModal(true)
+    }
+
+    const closeCustomModal = () => {
+        setshowCustomModal(false)
+    }
+
+    const handleCustomDiscard = () => {
+        console.log("Discarding changes and navigating away")
+        closeCustomModal()
+        alert("Changes discarded!")
+    }
+
+    const openModal = (e) => {
+        e.preventDefault()
+        setShowModal(true)
+    }
+
+    const closeModal = () => {
+        setShowModal(false)
+    }
+
+    const handleDiscard = () => {
+        console.log("Discarding changes and navigating away")
+        closeModal()
+        alert("Changes discarded!")
+    }
+
     // Get progress percentage based on active step
     const getProgressPercentage = () => {
         if (activeStep === "plant-type") return 33
@@ -274,7 +307,6 @@ const AddNewCrop = () => {
 
         return (
             <div className="flex justify-between items-center border-b mb-5 w-full border-slate-200">
-
                 <div className="flex items-center justify-start gap-2  mb-6">
                     <div className="relative w-16 h-16">
                         <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -306,7 +338,7 @@ const AddNewCrop = () => {
                 <div className="flex mb-5 bg-[#F5F8F8] py-2 text-sm px-6 rounded-lg cursor-pointer items-center gap-1">
                     <div className="text-gray-500 rethink-sans-400 text-xs">Unpublished</div>
                     {/* <div>
-                        <img src={TickImage } alt="" className="h-full w-full" />
+                        <img src={TickImage  || "/placeholder.svg"} alt="" className="h-full w-full" />
                     </div> */}
                 </div>
             </div>
@@ -688,10 +720,55 @@ const AddNewCrop = () => {
                     </div>
 
                     <div>
-                        <button className="w-full border-2 border-dashed border-gray-300 text-gray-600 rounded-md py-2.5 text-sm     transition-colors">
+                        <button onClick={openCustomModal} className="w-full border-2 border-dashed border-gray-300 text-gray-600 rounded-md py-2.5 text-sm     transition-colors">
                             Add Custom Field
                         </button>
                     </div>
+
+                    {showCustomModal && (
+                        <div className="fixed inset-0 p-2 backdrop-blur-sm bg-black/40 flex items-center justify-center z-50">
+                            <div className="relative bg-white rounded-lg shadow-lg w-full max-w-md">
+
+                                {/* ❌ Close button in top-right corner */}
+                                <button
+                                    onClick={closeCustomModal}
+                                    className="absolute top-3 right-3 text-gray-500 hover:text-black text-3xl font-semibold"
+                                >
+                                    &times;
+                                </button>
+
+                                {/* Header with title and description */}
+                                <div className="border-b border-slate-200 px-6 pt-6 pb-4">
+                                    <h3 className="text-lg font-semibold">Cancel Crop Details</h3>
+                                    <p className="text-gray-600 text-sm mt-1">
+                                        You are about to exit without saving, do you wish to continue?
+                                    </p>
+                                </div>
+
+                                {/* Coming Soon message */}
+                                <div className="py-10 text-center font-medium">Coming Soon</div>
+
+                                {/* Divider line */}
+                                <div className="border-t border-slate-200" />
+
+                                {/* Action buttons */}
+                                <div className="flex justify-center items-center gap-4 px-6 py-4">
+                                    <button
+                                        onClick={closeCustomModal}
+                                        className="px-6 py-2 border border-gray-900 text-sm rounded text-gray-700 hover:bg-gray-100"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={handleCustomDiscard}
+                                        className="px-6 py-2 text-sm bg-[#01575C] text-white rounded hover:bg-teal-700"
+                                    >
+                                        Keep Editing
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )
         }
@@ -721,15 +798,36 @@ const AddNewCrop = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div onClick={openModal}>
                     <Link
-                        to="/main-dashboard/crop-management"
                         className="text-gray-900 rethink-sans-400 cursor-pointer text-sm flex items-center"
                     >
                         <X size={16} className="mr-1" />
                         <span className="hidden md:inline">Cancel Edit</span>
                     </Link>
                 </div>
+
+                {showModal && (
+                    <div className="fixed inset-0 p-2 backdrop-blur-sm rounded-lg bg-black/40 flex items-center justify-center z-50">
+                        <div className="bg-white rounded-lg shadow-lg lg:p-8 p-6 w-90 max-w-md">
+                            <h3 className="md:text-xl text-lg text-center rethink-sans-500 ">Discard Crop Details</h3>
+                            <p className="text-gray-600 rethink-sans-400 text-center text-sm mb-6 mt-1">Unsaved crop changes will be lost. Continue?</p>
+
+                            <div className="flex justify-center items-center gap-2">
+                                <button
+                                    onClick={closeModal}
+                                    className="px-6 py-1.5 border rethink-sans-400 border-gray-900 text-sm rounded text-gray-700 hover:bg-gray-50"
+                                >
+                                    Cancel
+                                </button>
+                                <button onClick={handleDiscard} className="px-6 rethink-sans-400 py-1.5 text-sm bg-[#01575C] text-white rounded hover:bg-teal-700">
+                                    Discard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
             </div>
 
             <div className="rounded-md min-h-screen">
