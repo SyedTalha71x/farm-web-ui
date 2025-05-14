@@ -16,6 +16,13 @@ import AddNewCrop from './pages/crop-management/add-crop'
 import TaskManagement from './pages/tasks/task-management'
 import TaskList from './pages/tasks/task-list'
 
+
+import AnimalManagement from './pages/animal-management/animal-management'
+import AddAnimal from './pages/animal-management/add-animal'
+import AnimalList from './pages/animal-management/animal-list'
+
+
+import EcommerceManagement from './pages/ecommerce-management/ecommerce-management'
 import './App.css'
 
 function App() {
@@ -39,6 +46,16 @@ function App() {
 
           <Route path='task-manager' element={<TaskManagement />} />
           <Route path='task-manager/task-list' element={<TaskList />} />
+
+          <Route path='animal-management' element={<AnimalManagement />} />
+          <Route path='animal-management/add-animal' element={<AddAnimal />} />
+          <Route path='animal-management/animal-lists' element={<AnimalList />} />
+
+          <Route path='ecommerce' element={<EcommerceManagement />} />
+
+
+
+
 
         </Route>
       </Routes>

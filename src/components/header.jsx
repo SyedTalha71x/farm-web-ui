@@ -3,7 +3,7 @@ import Avatar from '../../public/images/avatar.svg'
 
 const Header = ({ toggleSidebar }) => {
     return (
-        <div className="bg-transparent flex items-center justify-between p-4 md:border-b border-none border-gray-200">
+        <div className="bg-transparent flex items-center justify-between p-4 border-b border-gray-200">
             <button onClick={toggleSidebar} className="text-gray-600 cursor-pointer">
                 <Menu size={20} />
             </button>

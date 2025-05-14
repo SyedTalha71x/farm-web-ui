@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isClose }) => {
                     <NavItem to="/main-dashboard/finance-analytics" image={FinanceImage} text="Finance & Analytics" />
                     <NavItem to="/main-dashboard/animal-management" image={AnimalImage} text="Animal Management" />
                     <NavItem to="/main-dashboard/task-manager" image={TaskImage} text="Task Manager" />
-                    <NavItem to="/main-dashboard/ecommerce-store" image={EcommerceImage} text="Ecommerce Store" />
+                    <NavItem to="/main-dashboard/ecommerce" image={EcommerceImage} text="Ecommerce Store" />
                 </div>
             </nav>
         </div>
