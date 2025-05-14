@@ -48,7 +48,7 @@ const DashboardLayout = () => {
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 z-30 bg-black/50 bg-opacity-50 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}

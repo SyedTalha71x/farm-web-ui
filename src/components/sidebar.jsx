@@ -12,7 +12,7 @@ import { X } from "lucide-react"
 const Sidebar = ({ isOpen, toggleSidebar, isClose }) => {
     return (
         <div
-            className={`bg-[#FFFFFF] w-64 border-r border-gray-200 p-2 fixed inset-y-0 left-0 z-30 transition-transform duration-500 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+            className={`bg-[#FFFFFF] w-64 border-r border-gray-200 p-2 fixed inset-y-0 left-0 z-40 transition-transform duration-500 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
                 }`}
         >
             <div onClick={isClose} className="absolute md:hidden top-2 right-2 ">
