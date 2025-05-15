@@ -12,6 +12,7 @@ import AboutYou from './pages/about-you/about-you'
 import DashboardLayout from './layouts/dashboard-layout'
 import CropManagement from './pages/crop-management/crop-management'
 import AddNewCrop from './pages/crop-management/add-crop'
+import CropList from './pages/crop-management/crop-list'
 
 import TaskManagement from './pages/tasks/task-management'
 import TaskList from './pages/tasks/task-list'
@@ -23,6 +24,8 @@ import AnimalList from './pages/animal-management/animal-list'
 
 
 import EcommerceManagement from './pages/ecommerce-management/ecommerce-management'
+import EcommerceStoreList from './pages/ecommerce-management/store-list'
+
 import './App.css'
 
 function App() {
@@ -43,6 +46,7 @@ function App() {
         <Route path='/main-dashboard' element={<DashboardLayout />}>
           <Route path='crop-management' element={<CropManagement />} />
           <Route path='crop-management/add-crop' element={<AddNewCrop />} />
+          <Route path='crop-management/crop-list' element={<CropList />} />
 
           <Route path='task-manager' element={<TaskManagement />} />
           <Route path='task-manager/task-list' element={<TaskList />} />
@@ -52,11 +56,7 @@ function App() {
           <Route path='animal-management/animal-lists' element={<AnimalList />} />
 
           <Route path='ecommerce' element={<EcommerceManagement />} />
-
-
-
-
-
+          <Route path='ecommerce/store-list' element={<EcommerceStoreList />} />
         </Route>
       </Routes>
     </Router>

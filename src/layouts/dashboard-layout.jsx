@@ -29,6 +29,8 @@ const DashboardLayout = () => {
     if (path === "/main-dashboard/animal-management/add-animal") return "Add Animal"
     if (path === "/main-dashboard/animal-management/animal-lists") return "Animal Lists"
     if(path === "/main-dashboard/ecommerce") return "Ecommerce Store"
+    if(path === "/main-dashboard/ecommerce/store-list") return "Ecommerce Store"
+    if(path === "/main-dashboard/crop-management/crop-list") return "Crop List"
 
     return "Dashboard"
   }

@@ -86,7 +86,7 @@ const AddStoreItemModal = ({ visible, onCancel, onSubmit }) => {
                 <div className="py-4 px-4 max-w-sm mx-auto w-full rethink-sans-400">
                     <div className="mb-4">
                         <div 
-                            className="bg-[#F5F8F8] border border-slate-100 rounded-md p-6 flex flex-col items-center justify-center mb-4 cursor-pointer"
+                            className="bg-[#F5F8F8] border border-slate-300 rounded-md p-6 flex flex-col items-center justify-center mb-4 cursor-pointer"
                             onClick={triggerFileInput}
                         >
                             <input 

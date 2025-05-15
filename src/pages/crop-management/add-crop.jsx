@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react"
 import { X } from "react-feather"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { TiArrowRight } from "react-icons/ti"
 import { BsCircleFill } from "react-icons/bs"
 import HouseImage from "../../../public/images/fi-rr-house-blank.svg"
@@ -15,6 +15,7 @@ import DefaultImage from "../../../public/images/image.svg"
 import IconsButton from "../../../public/images/Icon Buttons.svg"
 
 const AddNewCrop = () => {
+    const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState("plant-type")
     const [completedSteps, setCompletedSteps] = useState([])
     const [seedToHarvest, setSeedToHarvest] = useState("7 days")
@@ -156,6 +157,8 @@ const AddNewCrop = () => {
         } else if (activeStep === "plant-info") {
             setCompletedSteps([...completedSteps, "plant-info"])
             setActiveStep("harvest-info")
+        }else if(activeStep === "harvest-info"){
+            navigate("/main-dashboard/crop-management/crop-list")
         }
     }
 
