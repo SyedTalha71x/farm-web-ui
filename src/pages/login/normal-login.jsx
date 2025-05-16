@@ -99,12 +99,14 @@ const Login = () => {
                         </Link>
                     </div>
 
+<Link to={"/main-dashboard"}>
                     <button
                         type="submit"
                         className="w-full bg-[#01575C] text-sm mt-3 rethink-sans-500 text-white rounded-lg py-2 px-4 flex gap-3 cursor-pointer items-center justify-center hover:bg-teal-900 transition-colors"
-                    >
+                        >
                         Login
                     </button>
+                        </Link>
                 </form>
 
                 <div className="text-center md:text-md text-sm mt-6 rethink-sans-500 ">

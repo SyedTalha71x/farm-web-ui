@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import SocialLogin from './pages/login/social-login'
 import SocialSignup from './pages/signup/social-signup'
 import Login from './pages/login/normal-login'
@@ -17,11 +17,9 @@ import CropList from './pages/crop-management/crop-list'
 import TaskManagement from './pages/tasks/task-management'
 import TaskList from './pages/tasks/task-list'
 
-
 import AnimalManagement from './pages/animal-management/animal-management'
 import AddAnimal from './pages/animal-management/add-animal'
 import AnimalList from './pages/animal-management/animal-list'
-
 
 import EcommerceManagement from './pages/ecommerce-management/ecommerce-management'
 import EcommerceStoreList from './pages/ecommerce-management/store-list'
@@ -31,11 +29,15 @@ import FinanceAnalytics from './pages/finances/finance-analytics'
 
 import './App.css'
 
+
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SocialLogin />} />
+        {/* Redirect root / to /main-dashboard */}
+        <Route path="/" element={<Navigate to="/main-dashboard" replace />} />
+
+        <Route path="/social-login" element={<SocialLogin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-email-link" element={<ResetEmailLink />} />
@@ -45,24 +47,23 @@ function App() {
         <Route path="/customize-experience" element={<CustomizeExperience />} />
         <Route path="/social-signup" element={<SocialSignup />} />
 
+        <Route path="/main-dashboard" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="finance-analytics" element={<FinanceAnalytics />} />
 
-        <Route path='/main-dashboard' element={<DashboardLayout />}>
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='finance-analytics' element={<FinanceAnalytics />} />
+          <Route path="crop-management" element={<CropManagement />} />
+          <Route path="crop-management/add-crop" element={<AddNewCrop />} />
+          <Route path="crop-management/crop-list" element={<CropList />} />
 
-          <Route path='crop-management' element={<CropManagement />} />
-          <Route path='crop-management/add-crop' element={<AddNewCrop />} />
-          <Route path='crop-management/crop-list' element={<CropList />} />
+          <Route path="task-manager" element={<TaskManagement />} />
+          <Route path="task-manager/task-list" element={<TaskList />} />
 
-          <Route path='task-manager' element={<TaskManagement />} />
-          <Route path='task-manager/task-list' element={<TaskList />} />
+          <Route path="animal-management" element={<AnimalManagement />} />
+          <Route path="animal-management/add-animal" element={<AddAnimal />} />
+          <Route path="animal-management/animal-lists" element={<AnimalList />} />
 
-          <Route path='animal-management' element={<AnimalManagement />} />
-          <Route path='animal-management/add-animal' element={<AddAnimal />} />
-          <Route path='animal-management/animal-lists' element={<AnimalList />} />
-
-          <Route path='ecommerce' element={<EcommerceManagement />} />
-          <Route path='ecommerce/store-list' element={<EcommerceStoreList />} />
+          <Route path="ecommerce" element={<EcommerceManagement />} />
+          <Route path="ecommerce/store-list" element={<EcommerceStoreList />} />
         </Route>
       </Routes>
     </Router>

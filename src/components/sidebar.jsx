@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isClose }) => {
 
             <nav className="mt-4 px-2">
                 <div className="space-y-1">
-                    <NavItem to="/main-dashboard/dashboard" image={DashboardImage} text="Dashboard" />
+                    <NavItem to="/main-dashboard" image={DashboardImage} text="Dashboard" />
                     <NavItem to="/main-dashboard/crop-management" image={CropImage} text="Crop Management" />
                     <NavItem to="/main-dashboard/finance-analytics" image={FinanceImage} text="Finance & Analytics" />
                     <NavItem to="/main-dashboard/animal-management" image={AnimalImage} text="Animal Management" />

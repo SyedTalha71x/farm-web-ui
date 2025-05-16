@@ -17,23 +17,23 @@ const DashboardLayout = () => {
 
   const getPageTitle = () => {
     const path = location.pathname
-
-    if (path === "/main-dashboard/dashboard") return "Dashboard"
+  
+    if (path === "/main-dashboard") return "Dashboard"
     if (path === "/main-dashboard/crop-management") return "Crop Management"
     if (path === "/main-dashboard/finance-analytics") return "Finance & Analytics"
     if (path === "/main-dashboard/animal-management") return "Animal Management"
     if (path === "/main-dashboard/task-manager") return "Task Manager"
-    if (path === "/main-dashboard/ecommerce-store") return "Ecommerce Store"
+    if (path === "/main-dashboard/ecommerce") return "Ecommerce Store"
     if (path === "/main-dashboard/crop-management/add-crop") return "Add New Crop"
     if (path === "/main-dashboard/task-manager/task-list") return "Task Manager"
     if (path === "/main-dashboard/animal-management/add-animal") return "Add Animal"
     if (path === "/main-dashboard/animal-management/animal-lists") return "Animal Lists"
-    if(path === "/main-dashboard/ecommerce") return "Ecommerce Store"
-    if(path === "/main-dashboard/ecommerce/store-list") return "Ecommerce Store"
-    if(path === "/main-dashboard/crop-management/crop-list") return "Crop List"
-
+    if (path === "/main-dashboard/ecommerce/store-list") return "Ecommerce Store"
+    if (path === "/main-dashboard/crop-management/crop-list") return "Crop List"
+  
     return "Dashboard"
   }
+  
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 relative">

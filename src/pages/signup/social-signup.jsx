@@ -58,17 +58,19 @@ const SocialSignup = () => {
                         <div className="flex-grow border-t border-gray-300"></div>
                     </div>
 
+<Link to={"/signup"}>
                     <button className="w-full bg-[#01575C] text-sm mt-3 rethink-sans-500 text-white rounded-lg py-2 px-4 flex gap-3 cursor-pointer items-center justify-center hover:bg-teal-900 transition-colors">
                         <div>
                             <MdOutlineEmail className="" size={18} />
                         </div>
                         Sign Up Using Email
                     </button>
+</Link>
                 </div>
 
                 <div className="text-center md:text-md text-sm mt-6 rethink-sans-500 ">
                     <span className="text-gray-600">Already have an account? </span>
-                    <Link to={"/"} className="text-[#17A24A] font-medium hover:underline">
+                    <Link to={"/login"} className="text-[#17A24A] font-medium hover:underline">
                         Login
                     </Link>
                 </div>
