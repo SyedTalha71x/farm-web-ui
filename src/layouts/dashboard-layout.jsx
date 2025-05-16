@@ -42,7 +42,7 @@ const DashboardLayout = () => {
       <div className="flex-1 md:ml-64 w-full">
         <Header toggleSidebar={toggleSidebar} pageTitle={getPageTitle()} />
 
-        <main className="lg:p-6 p-4 pt-6 overflow-auto min-h-[calc(100vh-60px)]">
+        <main className="lg:p-6 p-2 pt-6 overflow-auto min-h-[calc(100vh-60px)]">
           <h1 className="text-2xl rethink-sans-700 text-gray-800 mb-6">{getPageTitle()}</h1>
           <Outlet />
         </main>

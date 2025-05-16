@@ -17,3 +17,27 @@
   font-optical-sizing: auto;
   font-weight: 500;
 }
+
+/* scrollbar.css */
+.scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #9ca3af #e5e7eb; /* thumb color, track color */
+}
+
+/* For WebKit-based browsers */
+.scrollbar::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+  width: 6px;  /* vertical scrollbar width */
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #e5e7eb; /* light gray track */
+  border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* medium gray thumb */
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}

@@ -26,6 +26,9 @@ import AnimalList from './pages/animal-management/animal-list'
 import EcommerceManagement from './pages/ecommerce-management/ecommerce-management'
 import EcommerceStoreList from './pages/ecommerce-management/store-list'
 
+import Dashboard from './pages/dashboard/dashboard'
+import FinanceAnalytics from './pages/finances/finance-analytics'
+
 import './App.css'
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
 
 
         <Route path='/main-dashboard' element={<DashboardLayout />}>
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='finance-analytics' element={<FinanceAnalytics />} />
+
           <Route path='crop-management' element={<CropManagement />} />
           <Route path='crop-management/add-crop' element={<AddNewCrop />} />
           <Route path='crop-management/crop-list' element={<CropList />} />

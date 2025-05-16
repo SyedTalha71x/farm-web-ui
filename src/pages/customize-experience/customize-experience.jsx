@@ -59,11 +59,11 @@ const CustomizeExperience = () => {
     }
 
     const handleSkip = () => {
-        navigate("/main-dashboard/crop-management")
+        navigate("/main-dashboard/dashboard")
     }
 
     const handleComplete = () => {
-        navigate("/main-dashboard/crop-management")
+        navigate("/main-dashboard/dashboard")
     }
 
     return (
