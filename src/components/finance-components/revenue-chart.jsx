@@ -41,7 +41,7 @@ const RevenueChart = () => {
       
       <div className="md:h-[56vh] h-auto mt-10 md:overflow-x-visible scrollbar overflow-x-auto">
   <div className="min-w-[700px] w-full">
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={400}>
       <LineChart
         data={data}
         margin={{ top: 10, right: 10, left: 0, bottom: 10 }}

@@ -43,7 +43,7 @@ const RevenueChart = () => {
 
       <div className="md:h-94 h-auto mt-10 overflow-x-auto scrollbar">
         <div className="min-w-[700px] w-full">
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={360}>
             <LineChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
               <defs>
                 <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
