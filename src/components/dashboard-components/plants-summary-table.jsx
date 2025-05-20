@@ -224,12 +224,12 @@ const PlantsSummaryTable = () => {
         <div className="rethink-sans-400 ">
             <div className="">
                 <div className="bg-white rounded-xl border border-slate-200/70 lg:p-6 p-5">
-                    <div className='flex md:justify-between border-b border-slate-200/70 justify-start flex-col md:flex-row md:items-center items-start'>
+                    <div className='flex justify-between  items-center border-b border-slate-200/70 '>
                         <div className="mb-4">  
                             <h2 className="text-lg rethink-sans-500 mb-1">Plants Summary</h2>
                             <p className="text-sm text-gray-500 rethink-sans-400">Table of your added crops.</p>
                         </div>
-                        <div>
+                        <div className='md:mb-0 mb-5'>
                             <img src={VectorArrow} alt="" className='cursor-pointer' />
                         </div>
                     </div>

@@ -188,7 +188,7 @@ const StoreItemsList = () => {
 
     return (
         <div className="rethink-sans-400">
-            <div className="">  
+            <div className="">
 
                 <div className="bg-white rounded-xl border border-slate-200/70  lg:p-6 p-5">
                     <div className='flex md:justify-between border-b border-slate-200/50 justify-start flex-col md:flex-row md:items-center items-start'>
@@ -199,20 +199,20 @@ const StoreItemsList = () => {
                         <div className='flex justify-end items-center'>
                             <div className='flex items-center gap-5'>
 
-                            <div className="relative    ">
-                                <input
-                                    type="text"
-                                    placeholder="Search tasks"
-                                    className="pl-8 pr-4 py-2 rethink-sans-400 outline-none bg-[#F8FAFA] rounded-md text-sm"
-                                    value={searchText}
-                                    onChange={(e) => setSearchText(e.target.value)}
-                                />
-                                <Search size={16} className="absolute left-2.5 top-2.5 text-gray-400" />
+                                <div className="relative md:mb-0 mb-5    ">
+                                    <input
+                                        type="text"
+                                        placeholder="Search tasks"
+                                        className="pl-8 pr-4 md:w-auto w-full py-2 rethink-sans-400 outline-none bg-[#F8FAFA] rounded-md text-sm"
+                                        value={searchText}
+                                        onChange={(e) => setSearchText(e.target.value)}
+                                    />
+                                    <Search size={16} className="absolute left-2.5 top-2.5 text-gray-400" />
+                                </div>
+                                <div className='md:mb-0 mb-4'>
+                                    <img src={VectorArrow} alt="" className='cursor-pointer' />
+                                </div>
                             </div>
-                            <div>
-                                <img src={VectorArrow} alt="" className='cursor-pointer' />
-                            </div>
-                                    </div>
                         </div>
                     </div>
 

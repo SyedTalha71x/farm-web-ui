@@ -28,22 +28,23 @@ const Sidebar = ({ isOpen, toggleSidebar, isClose }) => {
 
             <nav className="mt-4 px-2">
                 <div className="space-y-1">
-                    <NavItem to="/main-dashboard" icon={FiHome} text="Dashboard" />
-                    <NavItem to="/main-dashboard/crop-management" icon={GiPlantSeed} text="Crop Management" />
-                    <NavItem to="/main-dashboard/finance-analytics" icon={FiPieChart} text="Finance & Analytics" />
-                    <NavItem to="/main-dashboard/animal-management" icon={FaCow} text="Animal Management" />
-                    <NavItem to="/main-dashboard/task-manager" icon={BsListTask} text="Task Manager" />
-                    <NavItem to="/main-dashboard/ecommerce" icon={FiShoppingBag} text="Ecommerce Store" />
+                    <NavItem to="/main-dashboard" icon={FiHome} text="Dashboard" isClose={isClose} />
+                    <NavItem to="/main-dashboard/crop-management" icon={GiPlantSeed} text="Crop Management" isClose={isClose} />
+                    <NavItem to="/main-dashboard/finance-analytics" icon={FiPieChart} text="Finance & Analytics" isClose={isClose} />
+                    <NavItem to="/main-dashboard/animal-management" icon={FaCow} text="Animal Management" isClose={isClose} />
+                    <NavItem to="/main-dashboard/task-manager" icon={BsListTask} text="Task Manager" isClose={isClose} />
+                    <NavItem to="/main-dashboard/ecommerce" icon={FiShoppingBag} text="Ecommerce Store" isClose={isClose} />
                 </div>
             </nav>
         </div>
     )
 }
 
-const NavItem = ({ icon: Icon, text, to }) => {
+const NavItem = ({ icon: Icon, text, to, isClose }) => {
     return (
         <NavLink
             to={to}
+            onClick={isClose} // 👈 Close sidebar on navigation
             className={({ isActive }) =>
                 `flex items-center px-3 py-3 rethink-sans-500 text-sm rounded-lg transition-colors ${
                     isActive

@@ -12,7 +12,6 @@ const AnimalListTable = () => {
     const [searchText, setSearchText] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
-    const navigate = useNavigate();
 
     const data = [
         {
@@ -224,12 +223,12 @@ const AnimalListTable = () => {
             <div className="">
 
                 <div className="bg-white rounded-xl border border-slate-200/70  lg:p-6 p-5">
-                    <div className='flex md:justify-between justify-start flex-col md:flex-row md:items-center items-start'>
+                    <div className='flex justify-between  items-center '>
                         <div className="mb-4">
                             <h2 className="text-lg rethink-sans-500 mb-1">Animals Summary</h2>
                             <p className="text-sm text-gray-500 rethink-sans-400">Data of your animal records</p>
                         </div>
-                        <div>
+                        <div className='md:mb-0 mb-5'>
                             <img src={VectorArrow} alt="" />
                         </div>
                        

@@ -236,7 +236,7 @@ const StoreList = () => {
                         </div>
                     </div>
 
-                    <div className='h-[60vh]'>
+                    <div className='md:h-[60vh] h-full mb-10 md:mb-0'>
 
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
                             {filteredProducts.map((product) => (
