@@ -59,11 +59,11 @@ const CustomizeExperience = () => {
     }
 
     const handleSkip = () => {
-        navigate("/main-dashboard/dashboard")
+        navigate("/")
     }
 
     const handleComplete = () => {
-        navigate("/main-dashboard/dashboard")
+        navigate("/")
     }
 
     return (
