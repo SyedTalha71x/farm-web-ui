@@ -1,22 +1,33 @@
 import React, { useState } from 'react';
-import { Input } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
 import { ArrowDown, Link, Plus, Search } from 'react-feather';
 import { ArrowUpDown, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import AddStoreItemModal from './add-store-item';
 
 import Image1 from '../../../public/images/image-border.svg'
 import Image2 from '../../../public/images/image-border (1).svg'
 import Image3 from '../../../public/images/image-border (2).svg'
 import Image4 from '../../../public/images/image-border (3).svg'
 
-import RatingImage from '../../../public/images/rating.svg'
 
 const StoreList = () => {
     const [searchText, setSearchText] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
-    const navigate = useNavigate();
+    const [isModalVisible, setIsModalVisible] = useState(false)
+    
+    const showModal = () => {
+      setIsModalVisible(true)
+    }
+  
+    const handleCancel = () => {
+      setIsModalVisible(false)
+    }
+  
+    const handleSubmit = (taskData) => {
+      console.log("New task created:", taskData)
+      setIsModalVisible(false)
+    }
+  
 
     const products = [
         {
@@ -55,9 +66,6 @@ const StoreList = () => {
         },
     ];
 
-    const redirecToAddAnimal = () => {
-        navigate('/main-dashboard/animal-management/add-animal');
-    }
 
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(searchText.toLowerCase())
@@ -199,10 +207,12 @@ const StoreList = () => {
                             <ArrowUpDown size={16} />
                             <span className="inline">Sort By: Default</span>
                         </button>
-                        <button onClick={redirecToAddAnimal} className="flex items-center rethink-sans-400 gap-1 px-5 py-2 bg-[#01575C] text-white rounded-md md:text-sm text-xs">
+                        <button onClick={showModal}  className="flex items-center rethink-sans-400 gap-1 px-5 py-2 bg-[#01575C] text-white rounded-md md:text-sm text-xs">
                             <Plus size={16} />
                             <span className="inline">Add Store Item</span>
                         </button>
+                        <AddStoreItemModal visible={isModalVisible} onCancel={handleCancel} onSubmit={handleSubmit} />
+
                     </div>
                 </header>
 
@@ -241,12 +251,6 @@ const StoreList = () => {
                                                 e.target.src = "https://via.placeholder.com/150";
                                             }}
                                         />
-                                        {/* <button className="absolute top-2 right-2 w-8 h-8  rounded-full flex items-center justify-center shadow-sm">
-                                            <Heart size={22} className="text-white" />
-                                        </button> */}
-                                        {/* <div className="absolute bottom-2 left-2  bg-opacity-60 text-white text-xs px-2 py-1 rounded-md flex items-center">
-                                          <div className='flex items-center gap-1   '><img src={RatingImage} className='h-4 w-4' alt="" /><div className='text-md'>4.5</div></div>
-                                        </div> */}
                                     </div>
                                     <div className="p-1 rethink-sans-400">
                                         <div className="flex md:justify-between md:flex-row flex-col gap-1 justify-start items-start">

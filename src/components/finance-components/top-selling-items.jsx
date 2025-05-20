@@ -256,11 +256,11 @@ const TopSellingItems = () => {
                                     <input
                                         type="text"
                                         placeholder="Search tasks"
-                                        className=" pr-4 py-2 p-2 rethink-sans-400 outline-none bg-[#F8FAFA] rounded-md text-sm"
+                                        className=" pr-4 py-2 pl-8 rethink-sans-400 outline-none bg-[#F8FAFA] rounded-md text-sm"
                                         value={searchText}
                                         onChange={(e) => setSearchText(e.target.value)}
                                     />
-                                    <Search size={16} className="absolute md:block hidden left-2.5 top-2.5 text-gray-400" />
+                                    <Search size={16} className="absolute md:block hidden left-2 top-2.5 text-gray-400" />
                                 </div>
                             </div>
                         </div>
@@ -273,11 +273,11 @@ const TopSellingItems = () => {
                             pagination={false}
                             className="animal-table md:h-[51vh] h-auto "
                             rowClassName="hover:bg-gray-50"
-                        scroll={{ x: 800 }}
+                            scroll={{ x: 800 }}
                         />
                     </div>
 
-                    <div className="flex md:justify-start justify-center md:items-center items-start gap-4 md:flex-row flex-col mt-8">
+                    <div className="flex md:justify-between justify-start md:items-center items-start gap-4 md:flex-row flex-col mt-8">
                         <div className="flex items-center">
                             <span className="text-[10px] text-gray-700 rethink-sans-400 mr-2">Rows per page:</span>
                             <select

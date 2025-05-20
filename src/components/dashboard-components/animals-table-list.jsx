@@ -86,9 +86,6 @@ const AnimalListTable = () => {
         // },
     ];
 
-    const redirecToAddAnimal = () => {
-        navigate('/main-dashboard/animal-management/add-animal');
-    }
 
     const filteredData = data.filter(item =>
         Object.values(item).some(val =>
@@ -96,9 +93,8 @@ const AnimalListTable = () => {
         )
     );
 
-    // Custom pagination component
     const CustomPagination = () => {
-        const totalPages = Math.ceil(50 / pageSize); // Assuming 50 total records
+        const totalPages = Math.ceil(50 / pageSize);
         
         const handlePageChange = (page) => {
             setCurrentPage(page);

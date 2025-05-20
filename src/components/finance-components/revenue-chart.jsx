@@ -1,8 +1,5 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area } from 'recharts';
-import { ArrowUpRight } from 'lucide-react';
-import VectorArrow from '../../../public/images/Vector - arrow.svg'
-
 
 const data = [
   { period: '17 - 19', revenue: 15000 },

@@ -263,7 +263,7 @@ const StoreItemsList = () => {
 
                     <div className='bg-slate-200 h-[1px]'></div>
 
-                    <div className="flex md:justify-start   justify-center md:items-center items-start gap-4 md:flex-row flex-col mt-4">
+                    <div className="flex md:justify-between   justify-start md:items-center items-start gap-4 md:flex-row flex-col mt-4">
                         <div className="flex items-center ">
                             <span className="text-xs text-gray-700 rethink-sans-400 mr-2">Rows per page:</span>
                             <select

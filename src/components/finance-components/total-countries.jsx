@@ -40,7 +40,7 @@ const TotalCountries = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-sm max-w-xl w-full">
+    <div className="bg-white rounded-lg border border-slate-200/70 max-w-xl w-full">
       <div className="p-4 sm:p-5 flex justify-between items-center">
         <div>
           <h2 className="text-lg sm:text-xl rethink-sans-700 text-gray-900">Total Countries</h2>
