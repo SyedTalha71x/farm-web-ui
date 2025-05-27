@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 import LoginImage from "../../../public/images/login.png";
 import Card from "../../../public/images/45ba39a56bcfe55527135d286e4262b159600e99.jpg";
-import HouseImage from "../../../public/images/ChatGPT Image May 22, 2025, 11_29_56 AM 1.png";
+import HouseImage from "../../../public/images/26bad0af-967a-453a-b1d1-80a4ba709d62 1.svg";
 import LoginPageLogo from "../../../public/images/Logo-login.svg";
 import { Link } from "react-router-dom";
 
-export default function LoginPage() {
+export default function AdminResetLink() {
   const [email, setEmail] = useState("peter.q@farmconnect.com");
-  const [password, setPassword] = useState("••••••••••••");
-  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-screen flex p-2">
@@ -22,9 +19,9 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-black/90 bg-opacity-60"></div>
         <div className="relative z-10 flex flex-col items-center justify-center w-full text-white px-8">
           <img src={HouseImage} alt="Barn" className="" />
-          <h1 className="text-4xl rethink-sans-700  mb-4">Welcome Back!</h1>
-          <p className="text-gray-300 rethink-sans-400  text-lg text-center">
-            Below is a summary of what you need to catch up on:
+          <h1 className="text-4xl rethink-sans-700 mb-4">Enter Your Email</h1>
+          <p className="text-gray-300 rethink-sans-400 text-lg text-center">
+          Enter the email you are using as an administrator
           </p>
         </div>
       </div>
@@ -61,45 +58,8 @@ export default function LoginPage() {
                 className="w-full px-3 py-3 text-sm outline-none border-none rounded-md bg-[#F5F8F8]"
               />
             </div>
+            <Link to={"/admin-verify-code"}>
 
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-3 text-sm outline-none pr-10 border-none rounded-md bg-[#F5F8F8]"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 flex items-center text-gray-500"
-                >
-                  {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-                </button>
-              </div>
-            </div>
-
-            <div className="text-left">
-              <span className="text-sm text-gray-600">
-                Forgot your password?{" "}
-              </span>
-              <Link     
-                to={"/admin-reset-link"}
-                className="text-sm text-green-600 hover:text-green-700 font-medium"
-              >
-                Reset Password
-              </Link>
-            </div>
-
-<Link to={"/admin-dashboard/dashboard"}>
             <button
               type="submit"
               className="w-full bg-[#01575C] cursor-pointer text-white py-3 px-4 rounded-md transition duration-200 text-sm flex items-center justify-center"
@@ -115,9 +75,9 @@ export default function LoginPage() {
                   strokeLinejoin="round"
                   strokeWidth={2}
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
+                  />
               </svg>
-              Login as Admin
+              Send Reset Link
             </button>
                   </Link>
           </form>

@@ -29,6 +29,9 @@ import FinanceAnalytics from './pages/finances/finance-analytics'
 
 
 import AdminLogin from './pages/login/admin-login'
+import AdminResetLink from './pages/admin-reset-link/admin-reset-link'
+import AdminVerifyCode from './pages/admin-verify-code/admin-verify-code'
+import AdminCreatePassword from './pages/admin-create-password/admin-create-password'
 
 import AdminDashboardLayout from './layouts/admin-dashboard'
 import AdminDashboard from './pages/admin-dashboard/dashboard'
@@ -41,6 +44,7 @@ import LMSManagement from './pages/lms-management/lms-management'
 import ContentList from './pages/lms-management/content-list'
 
 import RolesAndPermission from './pages/roles-and-permissions/roles-management'
+import RolesList from './pages/roles-and-permissions/roles-list'
 
 import './App.css'
 
@@ -53,6 +57,12 @@ function App() {
 
         <Route path="/social-login" element={<SocialLogin />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin-reset-link" element={<AdminResetLink />} />
+        <Route path="/admin-verify-code" element={<AdminVerifyCode />} />
+        <Route path="/admin-create-password" element={<AdminCreatePassword />} />
+
+
+
         
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

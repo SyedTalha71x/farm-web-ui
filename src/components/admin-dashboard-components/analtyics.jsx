@@ -34,7 +34,7 @@ const DashboardAnalytics = () => {
 
   return (
     <div className="mt-10">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex md:justify-between justify-start md:flex-row flex-col md:items-center items-start gap-3 mb-6">
        <div>
         <h1 className="text-2xl rethink-sans-700 ">Dashboard</h1>
         <p className="rethink-sans-400 text-gray-700">Showing data from the last 30 days</p>
