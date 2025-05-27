@@ -27,6 +27,15 @@ import EcommerceStoreList from './pages/ecommerce-management/store-list'
 import Dashboard from './pages/dashboard/dashboard'
 import FinanceAnalytics from './pages/finances/finance-analytics'
 
+
+import AdminLogin from './pages/login/admin-login'
+
+import AdminDashboardLayout from './layouts/admin-dashboard'
+import AdminDashboard from './pages/admin-dashboard/dashboard'
+import UserManagement from './pages/user-management/user-management'
+import UserList from './pages/user-management/user-list'
+import AdminEcommerceManagement from './pages/admin-ecommerce-management/admin-ecommerce-management'
+
 import './App.css'
 
 
@@ -34,10 +43,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Redirect root / to /main-dashboard */}
         <Route path="/" element={<Navigate to="/main-dashboard" replace />} />
 
         <Route path="/social-login" element={<SocialLogin />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-email-link" element={<ResetEmailLink />} />
@@ -64,6 +74,13 @@ function App() {
 
           <Route path="ecommerce" element={<EcommerceManagement />} />
           <Route path="ecommerce/store-list" element={<EcommerceStoreList />} />
+        </Route>
+
+        <Route path='/admin-dashboard' element={<AdminDashboardLayout/>}>
+          <Route path='dashboard' element={<AdminDashboard />} />
+          <Route path='user-management' element={<UserManagement />} />
+          <Route path='user-management/user-list' element={<UserList />} />
+          <Route path='admin-ecommerce-management' element={<AdminEcommerceManagement />} />
         </Route>
       </Routes>
     </Router>
