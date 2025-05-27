@@ -21,13 +21,13 @@ const formatYAxis = (value) => {
   return `$${value / 1000}k`;
 };
 
-const RevenueChart = () => {
+const ExpenseReports = () => {
   return (
     <div className="bg-white rounded-lg p-5 border border-slate-200/70 w-full max-w-3xl">
       <div className="flex justify-between items-start mb-4">
         <div>
           <div className='flex md:flex-row flex-col md:gap-2 gap-0'>
-            <h2 className="text-lg  rethink-sans-700 text-gray-900">Revenue Report</h2>
+            <h2 className="text-lg  rethink-sans-700 text-gray-900">Expense Reports</h2>
           </div>
           <p className="text-sm text-gray-500 rethink-sans-500">$10,732 compared to previous period</p>
         </div>
@@ -37,7 +37,7 @@ const RevenueChart = () => {
         </div>
       </div>
 
-      <div className="md:h-[435px] h-auto mt-10 overflow-x-auto scrollbar">
+      <div className="md:h-[446px] h-auto mt-10 overflow-x-auto scrollbar">
         <div className="min-w-[700px] w-full">
           <ResponsiveContainer width="100%" height={430}>
             <BarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
@@ -79,4 +79,4 @@ const RevenueChart = () => {
   );
 };
 
-export default RevenueChart;
+export default ExpenseReports;

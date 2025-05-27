@@ -35,6 +35,12 @@ import AdminDashboard from './pages/admin-dashboard/dashboard'
 import UserManagement from './pages/user-management/user-management'
 import UserList from './pages/user-management/user-list'
 import AdminEcommerceManagement from './pages/admin-ecommerce-management/admin-ecommerce-management'
+import AdminAnalytics from './pages/admin-analytics/analytics'
+
+import LMSManagement from './pages/lms-management/lms-management'
+import ContentList from './pages/lms-management/content-list'
+
+import RolesAndPermission from './pages/roles-and-permissions/roles-management'
 
 import './App.css'
 
@@ -81,6 +87,16 @@ function App() {
           <Route path='user-management' element={<UserManagement />} />
           <Route path='user-management/user-list' element={<UserList />} />
           <Route path='admin-ecommerce-management' element={<AdminEcommerceManagement />} />
+          <Route path='admin-analytics' element={<AdminAnalytics />} />
+
+          <Route path='content-management' element={<LMSManagement />} />
+          <Route path='content-management/content-list' element={<ContentList />} />
+
+          <Route path='roles-and-permissions' element={<RolesAndPermission/>}/>
+
+
+
+
         </Route>
       </Routes>
     </Router>

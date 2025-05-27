@@ -1,12 +1,14 @@
 import { useState } from "react"
 import LoginPageLogo from '../../../public/images/Logo-login.svg'
 import Avatar from "../../../public/images/avatar.svg"
-import { Bell } from "lucide-react"
+import { Bell, User } from "lucide-react"
 import { FiPlus } from "react-icons/fi";
 import { PiHouseSimpleLight } from "react-icons/pi";
+import { GrAnalytics } from "react-icons/gr";
 
 import { TbUsersGroup } from "react-icons/tb";
 import { BiShoppingBag } from "react-icons/bi";
+import { PiBooks } from "react-icons/pi";
 
 
 
@@ -18,8 +20,12 @@ export default function Navbar() {
     const navigationItems = [
         { name: "Dashboard", href: "/admin-dashboard/dashboard", icon: <PiHouseSimpleLight size={16} /> },
         { name: "Users", href: "/admin-dashboard/user-management", icon: <TbUsersGroup size={16} /> },
-        { name: "Tab Option 1", href: "#", icon: <FiPlus size={16} /> },
+        { name: "LMS", href: "/admin-dashboard/content-management", icon: <PiBooks size={16} /> },
+        { name: "Roles", href: "/admin-dashboard/roles-and-permissions", icon: <User size={16} /> },
+
+        { name: "Analytics", href: "/admin-dashboard/admin-analytics", icon: <GrAnalytics size={16} /> },
         { name: "Ecommerce", href: "/admin-dashboard/admin-ecommerce-management", icon: <BiShoppingBag size={16} /> },
+
     ]
 
     return (
@@ -28,7 +34,7 @@ export default function Navbar() {
                 {/* Left Logo */}
                 <div className="flex items-center">
                     <img src={LoginPageLogo} alt="Logo" className="h-8 mr-2" />
-                    <span className="text-xl rethink-sans-700 font-semibold text-gray-800">
+                    <span className="text-xl md:block hidden rethink-sans-700 font-semibold text-gray-800">
                         Farm <span className="text-green-600">Connect</span>
                     </span>
                 </div>
