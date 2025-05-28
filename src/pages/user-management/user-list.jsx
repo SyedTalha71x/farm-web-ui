@@ -400,7 +400,7 @@ const filteredData = users.filter(item =>
             )}
 
             {deleteModalVisible && (
-                <div className="fixed inset-0 bg-black/50 bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-black/50 bg-opacity-50 z-[60] flex items-center justify-center p-4">
                     <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 relative">
                         <div className="flex items-center justify-between p-6 pb-4">
                             <h2 className="text-xl font-semibold text-gray-900">Delete User</h2>
