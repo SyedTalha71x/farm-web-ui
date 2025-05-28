@@ -75,14 +75,12 @@ const RolesList = ({ searchText, onBack }) => {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      responsive: ["md"],
       sorter: (a, b) => a.description.localeCompare(b.description),
     },
     {
       title: "User Assigned",
       dataIndex: "userAssigned",
       key: "userAssigned",
-      responsive: ["lg"],
       sorter: (a, b) => a.userAssigned - b.userAssigned,
       render: (count) => (
         <span className="text-sm font-medium">{count}</span>
@@ -112,6 +110,8 @@ const RolesList = ({ searchText, onBack }) => {
       render: () => (
         <GoPaperclip className="text-gray-400 cursor-pointer hover:text-gray-600 text-lg" title="Upload files" />
       ),
+      sorter: (a, b) => Number(a.files) - Number(b.files),
+
     },
   ]
 
@@ -267,16 +267,16 @@ const RolesList = ({ searchText, onBack }) => {
 
         </div>
 
-        <div className="rethink-sans-400">
-          <Table
-            columns={rolesColumns}
-            dataSource={getCurrentPageData()}
-            pagination={false}
-            className="animal-table md:h-[51vh] h-auto"
-            rowClassName="hover:bg-gray-50"
-            scroll={{ x: 800 }}
-          />
-        </div>
+        <div className="rethink-sans-400 overflow-x-auto">
+  <Table
+    columns={rolesColumns}
+    dataSource={getCurrentPageData()}
+    pagination={false}
+    className="animal-table min-w-[800px] md:h-[51vh] h-auto"
+    rowClassName="hover:bg-gray-50"
+    scroll={{ x: true }}
+  />
+</div>
 
         <div className="flex md:justify-between justify-start md:items-center items-start gap-4 md:flex-row flex-col mt-8">
           <div className="flex items-center">

@@ -77,14 +77,12 @@ const SubscriptionList = ({ searchText, onBack }) => {
             title: "Description",
             dataIndex: "description",
             key: "description",
-            responsive: ["md"],
             sorter: (a, b) => a.description.localeCompare(b.description),
         },
         {
             title: "Price",
             dataIndex: "price",
             key: "price",
-            responsive: ["lg"],
             sorter: (a, b) => a.price - b.price,
             render: (price) => <span className="text-sm font-medium">${price}</span>,
         },
@@ -92,14 +90,12 @@ const SubscriptionList = ({ searchText, onBack }) => {
             title: "Users Subscribed",
             dataIndex: "userSubscribed",
             key: "userSubscribed",
-            responsive: ["lg"],
             sorter: (a, b) => a.userSubscribed - b.userSubscribed,
         },
         {
             title: "Actions",
             dataIndex: "actions",
             key: "actions",
-            responsive: ["lg"],
             sorter: (a, b) => a.actions - b.actions,
         },
         {
@@ -129,6 +125,8 @@ const SubscriptionList = ({ searchText, onBack }) => {
                     title="Upload files"
                 />
             ),
+            sorter: (a, b) => a.files.localeCompare(b.files),
+
         },
     ]
 

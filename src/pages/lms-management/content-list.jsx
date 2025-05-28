@@ -422,7 +422,7 @@ const ContentList = () => {
       </header>
       <div className="">
         <div className="bg-white rounded-xl border border-slate-200/70 lg:p-6 p-3">
-          <div className="flex md:justify-between justify-start flex-col md:flex-row md:items-center items-start">
+          <div className="flex md:justify-between justify-start flex-col md:flex-row md:items-center items-start gap-2">
             <div className="">
               {/* Tab Toggle Switch */}
               <div className="flex items-center md:gap-4 gap-2 ">

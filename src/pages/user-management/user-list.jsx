@@ -176,7 +176,6 @@ const UserList = () => {
     };
 
     const handleSaveChanges = () => {
-        // Handle save changes logic here
         console.log('Saving changes for user:', selectedUser);
         closeSidebar();
     };
@@ -184,7 +183,6 @@ const UserList = () => {
     const handleRoleSelect = (role) => {
         setSelectedRole(role);
         setRoleDropdownOpen(false);
-        // Update the selected user's role
         if (selectedUser) {
             setSelectedUser({ ...selectedUser, role: role });
         }
@@ -266,7 +264,7 @@ const UserList = () => {
         navigate('/main-dashboard/user-management/add-user');
     };
 
-    const filteredData = users.filter(item =>
+const filteredData = users.filter(item =>
         Object.values(item).some(val =>
             val.toString().toLowerCase().includes(searchText.toLowerCase())
         )
@@ -455,7 +453,6 @@ const UserList = () => {
                                         </label>
                                     </div>
 
-                                    {/* Buttons */}
                                     <div className="flex gap-3">
                                         <button 
                                             onClick={handleDeleteCancel}
@@ -482,13 +479,13 @@ const UserList = () => {
                 </div>
             )}
 
-            <div className={`fixed top-0 right-0 h-full md:w-90 w-full bg-white shadow-xl z-50 transform transition-transform duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`fixed top-0 right-0 h-full md:w-96 w-full bg-white shadow-xl z-50 transform transition-transform duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} overflow-y-auto`}>
                 {selectedUser && (
                     <div className="h-full flex flex-col">
-                        <div className="p-6 ">
+                        <div className="p-6 sticky top-0 bg-white z-10">
                             <button
                                 onClick={closeSidebar}
-                                className="absolute top-2 right-78 cursor-pointer p-2 border border-slate-500 rounded-md"
+                                className="absolute top-2 right-6 cursor-pointer p-2 border border-slate-500 rounded-md"
                             >
                                 <X size={20} className="text-gray-600" />
                             </button>
@@ -509,8 +506,7 @@ const UserList = () => {
                                     <input
                                         type="text"
                                         value={selectedUser.name}
-                                        className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm  rounded-md "
-
+                                        className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm rounded-md"
                                     />
                                 </div>
 
@@ -519,8 +515,7 @@ const UserList = () => {
                                     <input
                                         type="email"
                                         value={selectedUser.email}
-                                        className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm  rounded-md "
-
+                                        className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm rounded-md"
                                     />
                                 </div>
 
@@ -530,8 +525,7 @@ const UserList = () => {
                                         <input
                                             type="password"
                                             value={selectedUser.password}
-                                            className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm  rounded-md "
-
+                                            className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm rounded-md"
                                         />
                                         <button className="absolute right-3 top-2.5">
                                             <Edit3 size={16} className="text-teal-600" />
@@ -544,14 +538,14 @@ const UserList = () => {
                                     <div className="relative">
                                         <button
                                             onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                                            className="w-full px-3 py-2  bg-[#F5F8F8] outline-none text-sm     rounded-md  text-left flex items-center justify-between"
+                                            className="w-full px-3 py-2 bg-[#F5F8F8] outline-none text-sm rounded-md text-left flex items-center justify-between"
                                         >
                                             <span>{selectedRole}</span>
                                             <MdOutlineKeyboardArrowDown className={`text-gray-400 transition-transform ${roleDropdownOpen ? 'rotate-180' : ''}`} size={16} />
                                         </button>
 
                                         {roleDropdownOpen && (
-                                            <div className="absolute top-full left-0 right-0 mt-1 bg-white  rounded-md shadow-lg z-50 max-h-80 overflow-y-auto">
+                                            <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-md shadow-lg z-50 max-h-80 overflow-y-auto">
                                                 <div className="p-4 border-b border-gray-200">
                                                     <div className="flex items-center justify-between">
                                                         <h3 className="text-sm font-medium text-gray-900">Select an option</h3>
@@ -629,17 +623,17 @@ const UserList = () => {
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-gray-200 flex md:flex-row flex-col gap-3">
+                        <div className="p-6 border-t border-gray-200 flex md:flex-row flex-col gap-3 sticky bottom-0 bg-white">
                             <button
                                 onClick={showDeleteModal}
-                                className="flex-1 px-4 py-2 text-sm text-red-600  cursor-pointer transition-colors flex items-center justify-center gap-2"
+                                className="flex-1 px-4 py-2 text-sm text-red-600 cursor-pointer transition-colors flex items-center justify-center gap-2"
                             >
                                 <Trash2 size={16} />
                                 Delete User
                             </button>
                             <button
                                 onClick={handleSaveChanges}
-                                className="flex-1 px-4 py-2 text-sm bg-gray-600 text-white rounded-md cursor-pointer     hover:bg-gray-700 transition-colors"
+                                className="flex-1 px-4 py-2 text-sm bg-gray-600 text-white rounded-md cursor-pointer hover:bg-gray-700 transition-colors"
                             >
                                 Save Changes
                             </button>
@@ -667,7 +661,7 @@ const UserList = () => {
                     </div>
                 </header>
 
-                <div className="bg-white rounded-xl shadow-sm lg:p-6 p-5">
+                <div className="bg-white rounded-xl shadow-sm lg:p-6 p-3">
                     <div className='flex md:justify-between justify-start flex-col md:flex-row md:items-center items-start'>
                         <div className="mb-4">
                             <h2 className="text-lg rethink-sans-500 mb-1">Members</h2>

@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import LoginPageLogo from '../../../public/images/Logo-login.svg'
 import Avatar from "../../../public/images/avatar.svg"
-import { Bell, User } from "lucide-react"
+import { Bell, LogOut, User } from "lucide-react"
 import { FiPlus } from "react-icons/fi";
 import { PiHouseSimpleLight } from "react-icons/pi";
 import { GrAnalytics } from "react-icons/gr";
@@ -17,8 +17,35 @@ import { useLocation } from "react-router-dom";
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
+    const [showDropdown, setShowDropdown] = useState(false)
+    const [isClockedIn, setIsClockedIn] = useState(false)
+    const [clockedTime, setClockedTime] = useState("00:00:00")
+    const dropdownRef = useRef(null)
 
-    const location = useLocation(); // ✅ Get current URL
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowDropdown(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [])
+
+    const toggleClockIn = () => {
+        setIsClockedIn(!isClockedIn)
+        if (!isClockedIn) {
+            setClockedTime("03:08:55")
+        } else {
+            setClockedTime("00:00:00")
+        }
+    }
+
+
+    const location = useLocation();
 
     const navigationItems = [
         { name: "Dashboard", href: "/admin-dashboard/dashboard", icon: <PiHouseSimpleLight size={16} /> },
@@ -44,20 +71,20 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center rethink-sans-400 space-x-1">
-                {navigationItems.map((item) => (
-    <Link
-        key={item.name}
-        to={item.href}
-        className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
+                    {navigationItems.map((item) => (
+                        <Link
+                            key={item.name}
+                            to={item.href}
+                            className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
             ${isActive(item.href)
-                ? "bg-green-500 text-white"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            }`}
-    >
-        {item.icon}
-        <span>{item.name}</span>
-    </Link>
-))}
+                                    ? "bg-green-500 text-white"
+                                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                                }`}
+                        >
+                            {item.icon}
+                            <span>{item.name}</span>
+                        </Link>
+                    ))}
 
                 </div>
 
@@ -99,8 +126,42 @@ export default function Navbar() {
                     <Bell className="h-5 w-5 text-gray-600 cursor-pointer" />
 
                     {/* User Profile */}
-                    <div className="h-10 w-10 rounded-full cursor-pointer overflow-hidden">
+                    <div onClick={() => setShowDropdown(!showDropdown)} ref={dropdownRef} className="h-10 w-10 rounded-full cursor-pointer overflow-hidden">
                         <img src={Avatar || "/placeholder.svg"} alt="User Avatar" className="h-full w-full object-cover" />
+                        {showDropdown && (
+                            <div className="absolute right-3 mt-2 w-68 bg-white rounded-xl shadow-lg overflow-hidden z-10">
+                                <div className="p-4">
+                                    <div className="flex items-center gap-1 justify-start">
+                                        <button
+                                            onClick={toggleClockIn}
+                                            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isClockedIn ? "bg-teal-700" : "bg-gray-200"}`}
+                                        >
+                                            <span
+                                                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${isClockedIn ? "translate-x-6" : "translate-x-1"}`}
+                                            />
+                                        </button>
+                                        <div>
+
+                                            <span className="rethink-sans-500">Clock In</span>
+                                            <div className=" rethink-sans-400 text-sm text-gray-500">
+                                                Time clocked today: <span className="text-green-500">{clockedTime}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div className="border-t border-gray-200"></div>
+
+                                <Link to={"/admin-login"}>
+                                    <button className="w-full text-center cursor-pointer flex items-center justify-center px-4 py-3 text-red-500 hover:bg-gray-50 transition-colors">
+                                        <LogOut size={18} className="mr-2" />
+                                        <span className="text-sm">Log-out</span>
+                                    </button>
+                                </Link>
+                            </div>
+                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -147,20 +208,20 @@ export default function Navbar() {
 
                     {/* Mobile Navigation */}
                     <div className="px-2 space-y-1 rethink-sans-400">
-                    {navigationItems.map((item) => (
-    <Link
-        key={item.name}
-        to={item.href}
-        className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
+                        {navigationItems.map((item) => (
+                            <Link
+                                key={item.name}
+                                to={item.href}
+                                className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
             ${isActive(item.href)
-                ? "bg-green-500 text-white"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            }`}
-    >
-        {item.icon}
-        <span>{item.name}</span>
-    </Link>
-))}
+                                        ? "bg-green-500 text-white"
+                                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                                    }`}
+                            >
+                                {item.icon}
+                                <span>{item.name}</span>
+                            </Link>
+                        ))}
 
                     </div>
                 </div>
