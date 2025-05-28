@@ -1,17 +1,11 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react"
 import { X, Check } from "lucide-react"
-import { useNavigate } from "react-router-dom"
 import { Table } from "antd"
-import RolesList from "./roles-list"
 
 const AddRole = ({ visible, onCancel, onSubmit }) => {
-  const navigate = useNavigate()
-  const [rolename, setrolename] = useState("Senior Manager")
-  const [description, setdescription] = useState("Lorem Espur")
+  const [rolename, setRolename] = useState("Senior Manager")
+  const [description, setDescription] = useState("Lorem Espur")
   const [showPermissionsModal, setShowPermissionsModal] = useState(false)
-  const [showRolesList, setShowRolesList] = useState(false)
-
   const [isVisible, setIsVisible] = useState(false)
   const [isPermissionsVisible, setIsPermissionsVisible] = useState(false)
   const modalRef = useRef(null)
@@ -59,9 +53,13 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
   }
 
   const handleCreateRole = () => {
-    console.log("Creating role with permissions:", permissions)
+    const roleData = {
+      roleName: rolename,
+      description: description,
+      permissions: permissions
+    }
+    onSubmit(roleData)
     setShowPermissionsModal(false)
-    setShowRolesList(true)
   }
 
   const handlePrevious = () => {
@@ -71,11 +69,6 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
 
   const handleClosePermissions = () => {
     setShowPermissionsModal(false)
-    onCancel()
-  }
-
-  const handleBackFromRolesList = () => {
-    setShowRolesList(false)
     onCancel()
   }
 
@@ -145,10 +138,6 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
     },
   ]
 
-  if (showRolesList) {
-    return <RolesList onBack={handleBackFromRolesList} />
-  }
-
   if (!isVisible && !visible && !isPermissionsVisible && !showPermissionsModal) return null
 
   return (
@@ -164,7 +153,7 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
             className={`bg-white rounded-lg w-full max-w-[500px] shadow-xl z-10 transform ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"} transition-all duration-500`}
           >
             <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-lg rethink-sans-400">Add User</h3>
+              <h3 className="text-lg rethink-sans-400">Add Role</h3>
               <div>
                 <X onClick={onCancel} size={18} className="cursor-pointer" />
               </div>
@@ -177,7 +166,7 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
                   type="text"
                   placeholder="Enter role name"
                   value={rolename}
-                  onChange={(e) => setrolename(e.target.value)}
+                  onChange={(e) => setRolename(e.target.value)}
                   className="w-full text-sm cursor-pointer rounded-md px-3 outline-none py-2 bg-[#F5F8F8]"
                 />
               </div>
@@ -186,7 +175,7 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
                 <p className="text-xs text-gray-500 mb-1">Description</p>
                 <textarea
                   value={description}
-                  onChange={(e) => setdescription(e.target.value)}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="w-full text-sm cursor-pointer outline-none rounded-md px-3 py-2 bg-[#F5F8F8] min-h-[80px]"
                 />
               </div>
@@ -204,7 +193,7 @@ const AddRole = ({ visible, onCancel, onSubmit }) => {
                   onClick={handleSubmit}
                   className="px-4 py-2 bg-[#01575C] text-sm cursor-pointer hover:bg-teal-900 text-white rounded-md transition-colors"
                 >
-                  Invite
+                  Continue
                 </button>
               </div>
             </div>

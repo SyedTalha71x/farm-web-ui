@@ -399,7 +399,7 @@ const ContentList = () => {
   }
 
   return (
-    <div className="rethink-sans-400 mt-10 ">
+    <div className="rethink-sans-400 md:mt-10 mt-5 ">
       <header className="flex md:justify-between justify-start md:flex-row flex-col md:items-center items-start md:gap-0 gap-4 mb-6">
         <div>
           <h1 className="text-2xl rethink-sans-700">Content Management</h1>

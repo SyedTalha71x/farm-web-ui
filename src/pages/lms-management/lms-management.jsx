@@ -20,7 +20,7 @@ const LMSManagement = () => {
             setIsModalVisible(false)
           }
     return (
-        <div className="mt-10">
+        <div className="md:mt-10 mt-5">
             <div className="flex md:justify-start justify-start md:flex-row flex-col md:items-center items-start md:gap-0 gap-4 mb-6">
                 <div>
                     <h1 className="text-2xl rethink-sans-700 ">Content Management</h1>

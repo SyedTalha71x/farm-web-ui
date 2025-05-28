@@ -1,42 +1,40 @@
 import React from 'react';
+import Image1 from '../../../public/images/avatar.png'
+import Image2 from '../../../public/images/avatar-1.png'
+import Image3 from '../../../public/images/avatar-2.png'
+import Image4 from '../../../public/images/avatar-3.png'
+
 
 const TopRankingFarms = () => {
   const countries = [
     {
       name: 'Golden Dragon Acres',
-      flag: '🇨🇳',
+      flag: Image1,
       users: 76543,
       rank: 1,
       badgeColor: 'bg-yellow-400'
     },
     {
       name: 'Rainbow Valley Farm',
-      flag: '🇿🇦',
+      flag: Image2,
       users: 62789,
       rank: 2,
       badgeColor: 'bg-gray-200'
     },
     {
       name: 'Tropical Breeze Homestead',
-      flag: '🇭🇹',
+      flag: Image3,
       users: 53210,
       rank: 3,
       badgeColor: 'bg-orange-400'
     },
     {
       name: 'Sunset Ridge Farm',
-      flag: '🇵🇦',
+      flag: Image4,
       users: 45678,
       rank: 3,
       badgeColor: 'bg-gray-200'
     },
-    {
-      name: 'Andean Harvest Fields',
-      flag: '🇵🇪',
-      users: 39123,
-      rank: 5,
-      badgeColor: 'bg-gray-200'
-    }
   ];
 
   return (
@@ -49,13 +47,13 @@ const TopRankingFarms = () => {
         <div className="text-xs sm:text-sm text-gray-500 rethink-sans-400">Last 30 Days</div>
       </div>
 
-      <div className="border-t border-gray-100">
+      <div className="border-t border-gray-100 pb-6">
         {countries.map((country, index) => (
           <div key={index} className="p-4 sm:p-5 flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-100 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                <span className="text-lg sm:text-xl">{country.flag}</span>
-              </div>
+            <div className="flex gap-2 items-center">
+             <div className='h-14 w-14  '>
+              <img src={country.flag} alt="" />
+             </div>
               <div>
                 <h3 className="text-sm sm:text-base font-semibold text-gray-900">{country.name}</h3>
                 <p className="text-xs sm:text-sm text-gray-500">{country.users.toLocaleString()} Users</p>

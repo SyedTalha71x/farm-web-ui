@@ -1,37 +1,31 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react"
 import { Table, Switch } from "antd"
-import { Plus, Search, ExternalLink } from "react-feather"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { GoPaperclip } from "react-icons/go"
+import { Plus } from "lucide-react"
 import AddRole from "./add-role"
-import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 
-const RolesList = () => {
-  const [searchText, setSearchText] = useState("")
+const RolesList = ({ searchText, onBack }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [hasRoles, setHasRoles] = useState(false)
 
   const showModal = () => {
-    setIsModalVisible(true)
+      setIsModalVisible(true)
   }
 
   const handleCancel = () => {
-    setIsModalVisible(false)
+      setIsModalVisible(false)
   }
 
-  
-
-  const handleSubmit = (taskData) => {
-    console.log("New role created:", taskData)
-    setIsModalVisible(false)
+  const handleSubmit = (roleData) => {
+      console.log("New role created:", roleData)
+      setIsModalVisible(false)
+      setHasRoles(true)
   }
-  
-  const navigate = useNavigate()
 
-  // Roles data
   const rolesData = [
     {
       key: "1",
@@ -70,7 +64,6 @@ const RolesList = () => {
     },
   ]
 
-  // Roles table columns
   const rolesColumns = [
     {
       title: "Role Name",
@@ -128,7 +121,7 @@ const RolesList = () => {
 
   // Custom pagination component
   const CustomPagination = () => {
-    const totalPages = Math.ceil(filteredData.length / pageSize)
+    const totalPages = Math.ceil(50 / pageSize) // Assuming 50 total records
 
     const handlePageChange = (page) => {
       setCurrentPage(page)
@@ -205,7 +198,7 @@ const RolesList = () => {
               99+
             </button>,
           )
-        } else if (totalPages > 1) {
+        } else {
           buttons.push(
             <button
               key={totalPages}
@@ -257,59 +250,51 @@ const RolesList = () => {
   }
 
   return (
-    <div className="rethink-sans-400 mt-10">
-      
-      <div className="">
-        <div className="bg-white rounded-xl border border-slate-200/70 lg:p-6 p-3">
-          <div className="flex md:justify-between justify-start flex-col md:flex-row md:items-center items-start mb-6">
-            <div className="flex items-center gap-5">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search roles"
-                  className="pr-4 py-2 pl-8 rethink-sans-400 outline-none bg-[#F8FAFA] rounded-md text-sm"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                />
-                <Search size={16} className="absolute md:block hidden left-2 top-2.5 text-gray-400" />
-              </div>
-            </div>
+    <div className="rethink-sans-400 md:mt-10 mt-5">
+      <div className="bg-white ">
+        {onBack && (
+          <button onClick={onBack} className="mb-4 flex items-center text-sm text-gray-600">
+            <ChevronLeft size={16} className="mr-1" />
+            Back
+          </button>
+        )}
+        <div className="flex justify-end items-center  mb-5">
+          <button onClick={showModal} className="bg-[#01575C] rethink-sans-400 flex items-center justify-center gap-3 py-2 px-4 text-sm rounded-md text-white">
+            <Plus size={18}/>
+            Add Role</button>
+
+            <AddRole visible={isModalVisible} onCancel={handleCancel} onSubmit={handleSubmit} />
+
+        </div>
+
+        <div className="rethink-sans-400">
+          <Table
+            columns={rolesColumns}
+            dataSource={getCurrentPageData()}
+            pagination={false}
+            className="animal-table md:h-[51vh] h-auto"
+            rowClassName="hover:bg-gray-50"
+            scroll={{ x: 800 }}
+          />
+        </div>
+
+        <div className="flex md:justify-between justify-start md:items-center items-start gap-4 md:flex-row flex-col mt-8">
+          <div className="flex items-center">
+            <span className="text-[10px] text-gray-700 rethink-sans-400 mr-2">Rows per page:</span>
+            <select
+              className="border rethink-sans-400 border-gray-300 rounded px-2 py-1 text-sm"
+              value={pageSize}
+              onChange={(e) => setPageSize(Number(e.target.value))}
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={50}>50</option>
+            </select>
           </div>
 
-          <div className="rethink-sans-400 mt-4">
-            <Table
-              columns={rolesColumns}
-              dataSource={getCurrentPageData()}
-              pagination={false}
-              className="animal-table md:h-[51vh] h-auto"
-              rowClassName="hover:bg-gray-50"
-              scroll={{ x: 800 }}
-            />
-          </div>
+          <CustomPagination />
 
-          <div className="flex md:justify-between justify-start md:items-center items-start gap-4 md:flex-row flex-col mt-8">
-            <div className="flex items-center">
-              <span className="text-[10px] text-gray-700 rethink-sans-400 mr-2">Rows per page:</span>
-              <select
-                className="border rethink-sans-400 border-gray-300 rounded px-2 py-1 text-sm"
-                value={pageSize}
-                onChange={(e) => {
-                  setPageSize(Number(e.target.value))
-                  setCurrentPage(1) // Reset to first page when changing page size
-                }}
-              >
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-              </select>
-            </div>
-
-            <CustomPagination />
-
-            <div className="text-xs text-gray-500">
-              Showing {Math.min((currentPage - 1) * pageSize + 1, filteredData.length)} to {Math.min(currentPage * pageSize, filteredData.length)} of {filteredData.length} results
-            </div>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>

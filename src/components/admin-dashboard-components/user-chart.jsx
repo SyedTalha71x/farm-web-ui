@@ -20,7 +20,7 @@ const formatYAxis = (value) => {
 
 const UserEngagmentChart = () => {
   return (
-    <div className="bg-white rounded-lg p-5 border border-slate-200/70 w-full max-w-3xl">
+    <div className="bg-white rounded-lg lg:p-5 p-3 border border-slate-200/70 w-full max-w-3xl">
       <div className="flex justify-between items-start mb-4">
         <div>
           <div className='flex md:flex-row flex-col md:gap-2 gap-0'>

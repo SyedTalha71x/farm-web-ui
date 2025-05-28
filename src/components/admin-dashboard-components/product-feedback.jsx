@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Table, Input, Button, Dropdown } from 'antd';
-import { SearchOutlined, MoreOutlined, PlusOutlined, EditOutlined } from '@ant-design/icons';
-import { ArrowDown, Link, Plus, Search } from 'react-feather';
-import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import VectorArrow from '../../../public/images/Vector - arrow.svg'
-import { GoPaperclip } from "react-icons/go";
+import { Table } from 'antd';
+import {  Search } from 'react-feather';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image1 from '../../../public/images/image-border-fruits.png'
+import Image2 from '../../../public/images/image-border (1)-fruits.png'
+
 
 
 const ProductFeedback = () => {
@@ -21,7 +20,7 @@ const ProductFeedback = () => {
             rating: '4.5',
             reviews: '120 Reviews',
           
-            photo: 'https://ui-avatars.com/api/?name=Ethan+Carter',
+            photo: Image1,
         },
         {
             key: '2',
@@ -29,7 +28,7 @@ const ProductFeedback = () => {
             rating: '3.5',
             reviews: '10 Reviews',
           
-            photo: 'https://ui-avatars.com/api/?name=Olivia+Bennett',
+            photo: Image2,
         },
     ];
     

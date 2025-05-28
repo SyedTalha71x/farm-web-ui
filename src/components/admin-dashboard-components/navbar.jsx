@@ -9,24 +9,27 @@ import { GrAnalytics } from "react-icons/gr";
 import { TbUsersGroup } from "react-icons/tb";
 import { BiShoppingBag } from "react-icons/bi";
 import { PiBooks } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
-    const [activeLink, setActiveLink] = useState("Dashboard")
+
+    const location = useLocation(); // ✅ Get current URL
 
     const navigationItems = [
         { name: "Dashboard", href: "/admin-dashboard/dashboard", icon: <PiHouseSimpleLight size={16} /> },
         { name: "Users", href: "/admin-dashboard/user-management", icon: <TbUsersGroup size={16} /> },
         { name: "LMS", href: "/admin-dashboard/content-management", icon: <PiBooks size={16} /> },
         { name: "Roles", href: "/admin-dashboard/roles-and-permissions", icon: <User size={16} /> },
-
         { name: "Analytics", href: "/admin-dashboard/admin-analytics", icon: <GrAnalytics size={16} /> },
         { name: "Ecommerce", href: "/admin-dashboard/admin-ecommerce-management", icon: <BiShoppingBag size={16} /> },
+    ];
 
-    ]
+    const isActive = (href) => location.pathname === href;
 
     return (
         <nav className="bg-white border-b border-gray-200 px-4 py-3">
@@ -41,21 +44,21 @@ export default function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center rethink-sans-400 space-x-1">
-                    {navigationItems.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            onClick={() => setActiveLink(item.name)}
-                            className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
-                            ${activeLink === item.name
-                                    ? "bg-green-500 text-white"
-                                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                                }`}
-                        >
-                            {item.icon}
-                            <span>{item.name}</span>
-                        </a>
-                    ))}
+                {navigationItems.map((item) => (
+    <Link
+        key={item.name}
+        to={item.href}
+        className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
+            ${isActive(item.href)
+                ? "bg-green-500 text-white"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            }`}
+    >
+        {item.icon}
+        <span>{item.name}</span>
+    </Link>
+))}
+
                 </div>
 
                 {/* Right side - Search and Profile */}
@@ -144,24 +147,21 @@ export default function Navbar() {
 
                     {/* Mobile Navigation */}
                     <div className="px-2 space-y-1 rethink-sans-400">
-                        {navigationItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => {
-                                    setActiveLink(item.name)
-                                    setIsMenuOpen(false)
-                                }}
-                                className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors
-                                ${activeLink === item.name
-                                        ? "bg-green-500 text-white"
-                                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                                    }`}
-                            >
-                                {item.icon}
-                                <span>{item.name}</span>
-                            </a>
-                        ))}
+                    {navigationItems.map((item) => (
+    <Link
+        key={item.name}
+        to={item.href}
+        className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors 
+            ${isActive(item.href)
+                ? "bg-green-500 text-white"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            }`}
+    >
+        {item.icon}
+        <span>{item.name}</span>
+    </Link>
+))}
+
                     </div>
                 </div>
             )}
