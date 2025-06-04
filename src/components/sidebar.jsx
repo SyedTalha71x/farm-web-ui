@@ -5,7 +5,7 @@ import { X } from "lucide-react"
 // React Icons
 import { FiHome, FiPieChart, FiShoppingBag } from "react-icons/fi"
 import { GiPlantSeed } from "react-icons/gi"
-import { FaCow } from "react-icons/fa6"
+import { FaCow, FaTowerBroadcast } from "react-icons/fa6"
 import { BsListTask } from "react-icons/bs"
 
 import Sidebarlogo from '../../public/images/Logo Mark-dashboard.svg'
@@ -34,6 +34,8 @@ const Sidebar = ({ isOpen, toggleSidebar, isClose }) => {
                     <NavItem to="/main-dashboard/animal-management" icon={FaCow} text="Animal Management" isClose={isClose} />
                     <NavItem to="/main-dashboard/task-manager" icon={BsListTask} text="Task Manager" isClose={isClose} />
                     <NavItem to="/main-dashboard/ecommerce" icon={FiShoppingBag} text="Ecommerce Store" isClose={isClose} />
+                    <NavItem to="/main-dashboard/forecast" icon={FaTowerBroadcast} text="Forecast" isClose={isClose} />
+
                 </div>
             </nav>
         </div>

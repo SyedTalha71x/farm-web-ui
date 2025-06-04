@@ -1,4 +1,4 @@
-import CropImage from '../../../public/images/ChatGPT Image May 23, 2025, 12_13_59 PM 1.png'
+import CropImage from '../../../public/images/ChatGPT Image May 23, 2025, 12_13_59 PM 1-content.png'
 import { useState } from 'react'
 import AddContent from './add-content'
 

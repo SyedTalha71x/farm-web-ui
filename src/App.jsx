@@ -46,6 +46,8 @@ import ContentList from './pages/lms-management/content-list'
 import RolesAndPermission from './pages/roles-and-permissions/roles-management'
 import RolesList from './pages/roles-and-permissions/roles-list'
 
+import Forecast from './pages/forecast/forecast'
+
 import './App.css'
 
 
@@ -76,6 +78,7 @@ function App() {
         <Route path="/main-dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="finance-analytics" element={<FinanceAnalytics />} />
+          <Route path="forecast" element={<Forecast />} />
 
           <Route path="crop-management" element={<CropManagement />} />
           <Route path="crop-management/add-crop" element={<AddNewCrop />} />
